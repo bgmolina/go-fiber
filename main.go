@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/bgmolina/go-fiber/config"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/google/uuid"
@@ -35,6 +36,7 @@ func handlerCreateUser(req *fiber.Ctx) error {
 func main() {
 	// fiber app instance
 	app := fiber.New()
+	PORT := config.Config("PORT")
 
 	//middleware
 	// log all requests
@@ -51,5 +53,5 @@ func main() {
 	userGroup.Get("", handlerUser)
 	userGroup.Post("", handlerCreateUser)
 
-	app.Listen(":3000")
+	app.Listen(":" + PORT)
 }
