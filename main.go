@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/bgmolina/go-fiber/config"
+	"github.com/bgmolina/go-fiber/utils"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/google/uuid"
 )
 
@@ -34,13 +34,15 @@ func handlerCreateUser(req *fiber.Ctx) error {
 }
 
 func main() {
+	logger := utils.LoggerFn("main")
+	// load environment variables
+	env := config.EnvFn()
 	// fiber app instance
 	app := fiber.New()
-	PORT := config.Config("PORT")
+	PORT := env.API_PORT
 
-	//middleware
-	// log all requests
-	app.Use(logger.New())
+	//load database connection
+	config.DBConnection()
 
 	app.Get("/", func(req *fiber.Ctx) error {
 		return req.Status(fiber.StatusOK).JSON(fiber.Map{
@@ -53,5 +55,6 @@ func main() {
 	userGroup.Get("", handlerUser)
 	userGroup.Post("", handlerCreateUser)
 
+	logger.Info("Server running at: http://127.0.0.1:" + PORT)
 	app.Listen(":" + PORT)
 }
