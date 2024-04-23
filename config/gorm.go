@@ -9,7 +9,7 @@ import (
 var DB *gorm.DB
 
 func DBConnection() {
-	logger := utils.LoggerFn("gorm")
+	logger := utils.GetLogger("gorm")
 	env := EnvFn()
 	var err error
 

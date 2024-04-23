@@ -8,7 +8,7 @@ import (
 	"log/slog"
 )
 
-func LoggerFn(serviceName string) *slog.Logger {
+func GetLogger(serviceName string) *slog.Logger {
 	// logLevel := slog.LevelInfo // accept [Info, Warn, Error]
 	logLevel := slog.LevelDebug // accept all log levels
 
@@ -16,7 +16,7 @@ func LoggerFn(serviceName string) *slog.Logger {
 	location, err := time.LoadLocation("America/Argentina/Buenos_Aires")
 
 	if err != nil {
-		fmt.Println("[LoggerFn] [Error]:", err)
+		fmt.Println("[GetLogger] [Error]:", err)
 	}
 
 	//get the current date and time in the Argentina timezone
