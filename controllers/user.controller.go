@@ -5,18 +5,24 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type IUserController interface {
-	GetUser(req *fiber.Ctx) error
+func GetUsers(req *fiber.Ctx) error {
+	response := services.GetUsers()
+	return req.Status(fiber.StatusOK).JSON(response)
 }
 
-type UserController struct{}
-
-func GetUser(req *fiber.Ctx) error {
-	response := services.GetUser()
+func GetUserById(req *fiber.Ctx) error {
+	id := req.Params("id")
+	response := services.GetUserById(id)
 	return req.Status(fiber.StatusOK).JSON(response)
 }
 
 func CreateUser(req *fiber.Ctx) error {
 	response := services.CreateUser(req)
 	return req.Status(fiber.StatusCreated).JSON(response)
+}
+
+func DeleteUserById(req *fiber.Ctx) error {
+	id := req.Params("id")
+	response := services.DeleteUserById(id)
+	return req.Status(fiber.StatusOK).JSON(response)
 }
