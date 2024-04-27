@@ -8,8 +8,9 @@ import (
 )
 
 type sEnv struct {
-	API_PORT  string
-	PGSQL_URI string
+	API_PORT    string
+	PGSQL_URI   string
+	API_VERSION string
 }
 
 func EnvFn() sEnv {
@@ -20,8 +21,9 @@ func EnvFn() sEnv {
 	}
 	// return os.Getenv(key)
 	result := sEnv{
-		API_PORT:  os.Getenv("API_PORT"),
-		PGSQL_URI: os.Getenv("PGSQL_URI"),
+		API_PORT:    os.Getenv("API_PORT"),
+		PGSQL_URI:   os.Getenv("PGSQL_URI"),
+		API_VERSION: os.Getenv("API_VERSION"),
 	}
 
 	return result

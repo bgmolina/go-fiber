@@ -24,5 +24,5 @@ func CreateUser(req *fiber.Ctx) error {
 func DeleteUserById(req *fiber.Ctx) error {
 	id := req.Params("id")
 	response := services.DeleteUserById(id)
-	return req.Status(fiber.StatusOK).JSON(response)
+	return req.Status(fiber.StatusNoContent).JSON(response)
 }

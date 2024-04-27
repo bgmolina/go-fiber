@@ -1,11 +1,13 @@
 package services
 
 import (
+	"github.com/bgmolina/go-fiber/config"
 	"github.com/gofiber/fiber/v2"
 )
 
 func GetVersion() fiber.Map {
+	env := config.EnvFn()
 	return fiber.Map{
-		"version": "1.0.0",
+		"version": env.API_VERSION,
 	}
 }
