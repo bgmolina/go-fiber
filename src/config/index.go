@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type sEnv struct {
+type Env struct {
 	API_PORT    string
 	PGSQL_URI   string
 	API_VERSION string
@@ -14,12 +14,12 @@ type sEnv struct {
 	ENV         string
 }
 
-func EnvFn() sEnv {
+func EnvFn() Env {
 	// load .env file
 	godotenv.Load(".env")
 
 	// return os.Getenv(key)
-	result := sEnv{
+	result := Env{
 		API_PORT:    os.Getenv("API_PORT"),
 		API_VERSION: os.Getenv("API_VERSION"),
 		API_HOST:    os.Getenv("API_HOST"),
