@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: Golang API
+  description: This is a sample API
+  version: 1.0.0
+servers:
+  - url: /api
+
+paths:
+  /version:
+    get:
+      tags:
+        - "API version"
+      summary: Get API version
+      description: Get the version of the API.
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: "1.0.0"
+  /user:
+    get:
+      tags:
+        - "User"
+      summary: Get all users
+      description: Get all users.
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "Pepe"
+                    lastName:
+                      type: string
+                      example: "Argento"
+                    age:
+                      type: integer
+                      example: 45
+    post:
+      tags:
+        - "User"
+      summary: Create user
+      description: Create a new user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Pepe"
+                lastName:
+                  type: string
+                  example: "Argento"
+                age:
+                  type: integer
+                  example: 45
+      responses:
+        201:
+          description: User created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "Pepe"
+                  lastName:
+                    type: string
+                    example: "Argento"
+                  age:
+                    type: integer
+                    example: 45
+  /user/{id}:
+    get:
+      tags:
+        - "User"
+      summary: Get user by ID
+      description: Get user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "Pepe"
+                  lastName:
+                    type: string
+                    example: "Argento"
+                  age:
+                    type: integer
+                    example: 45
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found"
+    delete:
+      tags:
+        - "User"
+      summary: Delete user by ID
+      description: Delete user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: integer
+      responses:
+        204:
+          description: User deleted
+        404:
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found"

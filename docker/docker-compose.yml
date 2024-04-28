@@ -1,0 +1,21 @@
+services:
+  go-fiber:
+    image: golang:1.22-alpine3.19
+    container_name: go-fiber
+    working_dir: /usr/src/app
+    volumes:
+      - ../:/usr/src/app
+    ports:
+      - 3000:3000
+    env_file:
+      - ../.env
+    entrypoint:
+      - sh
+      - -c
+      - |
+        go install github.com/cosmtrek/air@latest
+        air -d -c .air.toml
+    restart: unless-stopped
+    mem_reservation: 128m
+    mem_limit: 256m
+    cpus: 0.50 # 50% of CPU

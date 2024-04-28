@@ -1,0 +1,16 @@
+services:
+  go-fiber-prod:
+    build: ../
+    image: go-fiber:1.0.0
+    container_name: go-fiber-prod
+    ports:
+      - 4000:4000
+    env_file:
+      - ../.env
+    environment:
+      - API_PORT=4000
+      - ENV=PROD
+    restart: unless-stopped
+    mem_reservation: 8m
+    mem_limit: 16m
+    cpus: 0.10 # 10% of CPU
