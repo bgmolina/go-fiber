@@ -9,7 +9,6 @@ services:
       - ../.env
     environment:
       - API_PORT=4000
-      - ENV=PROD
     restart: unless-stopped
     mem_reservation: 8m
     mem_limit: 16m

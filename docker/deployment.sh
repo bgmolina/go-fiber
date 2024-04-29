@@ -23,28 +23,28 @@ while true; do
     "1")
       ARGS="up -d --no-recreate"
       echo ""
-      echo "[Portafolio] Deploying services...🛠"
+      echo "Deploying services...🛠"
       docker compose -f docker-compose.yml $ARGS
 
       ;;
     "2")
       ARGS="down"
       echo ""
-      echo "[Portafolio] Removing services...🗑️"
+      echo "Removing services...🗑️"
       docker compose -f docker-compose.yml $ARGS
 
       ;;
     "3")
       ARGS="up -d --no-recreate "
       echo ""
-      echo "[Portafolio] Deploying services...🚀"
+      echo "Deploying services...🚀"
       docker compose -f docker-compose.prod.yml $ARGS
 
       ;;
     "4")
       ARGS="down"
       echo ""
-      echo "[Portafolio] Removing services...🗑️"
+      echo "Removing services...🗑️"
       docker compose -f docker-compose.prod.yml $ARGS
 
       ;;
