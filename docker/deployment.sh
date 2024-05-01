@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "====================="
-echo " go fiber deployment "
+echo " Go Fiber deployment "
 echo "====================="
 
 PS3="Select an option and press Enter 👆: "
