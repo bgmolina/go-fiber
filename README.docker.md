@@ -40,9 +40,9 @@ $ bash deployment.sh
 ```
 
 ```bash
-=======================
- Go Fiber deployment 💼
-=======================
+====================
+ Go Fiber deployment
+====================
 1) Deploy on development mode 🛠
 2) Delete on development mode 🗑️
 3) Deploy on production mode 🚀
