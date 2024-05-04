@@ -11,6 +11,16 @@ import (
 
 func Routes(app *fiber.App) {
 	env := config.EnvFn()
+	URL_DOC := func() string {
+		var result string
+		if env.ENV == "DEV" {
+			result = fmt.Sprintf("%s:%s/docs/swagger.yaml", env.API_HOST, env.API_PORT)
+		}
+		if env.ENV == "PROD" {
+			result = fmt.Sprintf("%s/docs/swagger.yaml", env.API_HOST)
+		}
+		return result
+	}()
 
 	//enable cors
 	app.Use(cors.New())
@@ -22,7 +32,7 @@ func Routes(app *fiber.App) {
 
 	app.Get("/docs/*", swagger.New(swagger.Config{
 		DeepLinking: true,
-		URL:         fmt.Sprintf("%s:%s/docs/swagger.yaml", env.API_HOST, env.API_PORT),
+		URL:         URL_DOC,
 		Title:       "Documentation",
 	}))
 
