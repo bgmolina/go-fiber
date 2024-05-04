@@ -31,4 +31,4 @@
 
 ### Demo 🎬
 
-<img width="500" src="./demo/demo.png"/>
+<img width="600" src="./demo/demo.webp"/>
