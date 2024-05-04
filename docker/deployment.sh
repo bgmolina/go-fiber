@@ -49,7 +49,6 @@ while true; do
 
       ;;
     "5")
-      echo "bye 👋"
       exit 0
       ;;
     *)
